@@ -1,0 +1,4 @@
+INSERT INTO `OFFICES` (`office_id`, `bank_id`, address, zip, phone, `local_cost`, `utilities_cost`, `employee_cost`, `total_expenses`, `total_income`, `balance`, `account_number`, `next_account_number`) VALUES
+('0001', '9876', 'address', 'zip', 'phone', 1000000, 800000, 100000, 1900000, 100000000, 98100000, '1234567890', 0);
+INSERT INTO employee (employee_id, name, surnames, address, salary, office_id) values('71461175Z', 'nameEmployee1', 'surnameEmployee2', 'streetEmployee1', 1000.10, '0001');
+INSERT INTO employee (employee_id, name, surnames, address, salary, office_id) values('70876871W', 'nameEmployee2', 'surnameEmployee2', 'streetEmployee2', 2000.20, '0001');
