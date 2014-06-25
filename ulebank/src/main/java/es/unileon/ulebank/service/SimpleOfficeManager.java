@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import es.unileon.ulebank.domain.Account;
 import es.unileon.ulebank.domain.Employee;
 import es.unileon.ulebank.domain.Office;
+import es.unileon.ulebank.handler.Handler;
 import es.unileon.ulebank.repository.EmployeeDao;
 import es.unileon.ulebank.repository.OfficeDao;
 
@@ -49,6 +51,22 @@ public class SimpleOfficeManager implements OfficeManager {
 		
 		officeDao.saveOffice(office);
 		
+	}
+
+	@Override
+	public Office findOffice(Handler id) {
+		Office office = officeDao.findOffice(id.toString());
+		
+		return office;
+	}
+
+	@Override
+	public List<Account> getAccountList(Handler officeID) {
+		
+		Office office = this.findOffice(officeID);
+		
+		 return office.getAccounts();
+
 	}
 
 }

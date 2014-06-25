@@ -14,6 +14,6 @@ public interface OfficeDao {
     
     public List<Employee> getEmployeeList();
     
-    public List<Account> getAccountList();
+	public Office findOffice(String id);
 
 }

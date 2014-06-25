@@ -43,9 +43,9 @@ public class JPAOfficeDao implements OfficeDao {
     }
     
     @Transactional(readOnly = true)
-    @SuppressWarnings("unchecked")
-    public List<Account> getAccountList() {
-        return em.createQuery("select a from Account a order by a.accountNumber").getResultList();
-    }
+	public Office findOffice(String id) {    	
+		return (Office) em.createQuery("select o from Office o where o.officeID=" + id).getResultList().get(0);
+	}
+
 
 }

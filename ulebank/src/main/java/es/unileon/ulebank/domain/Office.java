@@ -63,9 +63,9 @@ public class Office {
 	@JoinColumn(name = "office_id", nullable = false)
 	List<Employee> employees;
 	
-	/*@OneToMany(cascade = {CascadeType.ALL})
+	@OneToMany(cascade = {CascadeType.ALL})
 	@JoinColumn(name = "office_id", nullable = false)
-	List<Account> accounts;*/
+	List<Account> accounts;
 
 	public Office() {
 		
@@ -231,13 +231,13 @@ public class Office {
 		this.employees = employees;
 	}
 
-	/*public List<Account> getAccounts() {
+	public List<Account> getAccounts() {
 		return accounts;
 	}
 
 	public void setAccounts(List<Account> accounts) {
 		this.accounts = accounts;
-	}*/
+	}
 
 	@Override
 	public String toString() {
