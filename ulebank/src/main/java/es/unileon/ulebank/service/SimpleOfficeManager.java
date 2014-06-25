@@ -15,57 +15,57 @@ import es.unileon.ulebank.repository.OfficeDao;
 @Component
 public class SimpleOfficeManager implements OfficeManager {
 
-    private static final long serialVersionUID = 1L;
-    
-    @Autowired
-    private OfficeDao officeDao;
-    
-    @Autowired
-    private EmployeeDao employeeDao;
-    
-    public void setOfficeDao(OfficeDao officeDao) {
-        this.officeDao = officeDao;
-    }
+	private static final long serialVersionUID = 1L;
+
+	@Autowired
+	private OfficeDao officeDao;
+
+	@Autowired
+	private EmployeeDao employeeDao;
+
+	public void setOfficeDao(OfficeDao officeDao) {
+		this.officeDao = officeDao;
+	}
 
 	public List<Office> getOffices() {
 		return officeDao.getOfficeList();
 	}
-	
-	 public void setEmployeeDao(EmployeeDao employeeDao) {
-        this.employeeDao = employeeDao;
-    }
+
+	public void setEmployeeDao(EmployeeDao employeeDao) {
+		this.employeeDao = employeeDao;
+	}
 
 	public List<Employee> getEmployees() {
 		return officeDao.getEmployeeList();
-	}    
-	
+	}
+
 	public void addEmployee(Employee employee, Office office) {
-		
+
 		employee.setOffice(office);
-		
+
 		List<Employee> employees = office.getEmployees();
-		
+
 		employees.add(employee);
-		
+
 		office.setEmployees(employees);
-		
+
 		officeDao.saveOffice(office);
-		
+
 	}
 
 	@Override
 	public Office findOffice(Handler id) {
 		Office office = officeDao.findOffice(id.toString());
-		
+
 		return office;
 	}
 
 	@Override
 	public List<Account> getAccountList(Handler officeID) {
-		
+
 		Office office = this.findOffice(officeID);
-		
-		 return office.getAccounts();
+
+		return office.getAccounts();
 
 	}
 
