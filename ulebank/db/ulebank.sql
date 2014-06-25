@@ -94,9 +94,10 @@ ENGINE = InnoDB;
 -- Table `ULEBANK`.`ACCOUNTS_CLIENTS`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `ULEBANK`.`ACCOUNTS_CLIENTS` (
-  `client_id` VARCHAR(64) NOT NULL,
-  `account_number` VARCHAR(64) NOT NULL,
+  `client_id` VARCHAR(12) NOT NULL,
+  `account_number` VARCHAR(64) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NOT NULL,
   PRIMARY KEY (`client_id`, `account_number`),
+  INDEX `fk_ACCOUNTS_CLIENTS_CLIENTS1_idx` (`client_id` ASC),
   INDEX `fk_ACCOUNTS_CLIENTS_ACCOUNTS1_idx` (`account_number` ASC),
   CONSTRAINT `fk_ACCOUNTS_CLIENTS_CLIENTS1`
     FOREIGN KEY (`client_id`)
