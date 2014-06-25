@@ -38,7 +38,7 @@ public class Account {
 
 	public Account(String accountNumber, double balance, Date lastLiquidation,
 		int liquidationFrequency, double maxOverdraft, Office office) {
-		Handler numberAccount = new AccountHandler();
+		Handler numberAccount = new AccountHandler(accountNumber);
 		this.accountNumber = numberAccount.toString();
 		this.balance = balance;
 		this.lastLiquidation = lastLiquidation;
