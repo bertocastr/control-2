@@ -2,6 +2,7 @@ package es.unileon.ulebank.repository;
 
 import java.util.List;
 
+import es.unileon.ulebank.domain.Account;
 import es.unileon.ulebank.domain.Employee;
 import es.unileon.ulebank.domain.Office;
 
@@ -26,6 +27,11 @@ public class InMemoryOfficeDao implements OfficeDao {
 	public void saveOffice(Office office) {
 		officeList.add(office);
 		employeeList.addAll(office.getEmployees());
+	}
+
+	public List<Account> getAccountList() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
