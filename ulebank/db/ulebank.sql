@@ -3,6 +3,9 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 CREATE SCHEMA IF NOT EXISTS `ULEBANK` ;
+
+GRANT ALL ON ULEBANK.* TO ulebankuser@'%' IDENTIFIED BY 'pulebankuser';
+GRANT ALL ON ULEBANK.* TO ulebankuser@localhost IDENTIFIED BY 'pulebankuser';
 USE `ULEBANK` ;
 
 -- -----------------------------------------------------

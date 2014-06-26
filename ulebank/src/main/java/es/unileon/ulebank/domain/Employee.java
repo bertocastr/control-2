@@ -11,7 +11,7 @@ import es.unileon.ulebank.handler.DNIHandler;
 import es.unileon.ulebank.handler.Handler;
 
 @Entity
-@Table(name="EMPLOYEE")
+@Table(name="EMPLOYEES")
 public class Employee {
 
 	@Id

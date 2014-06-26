@@ -3,7 +3,7 @@ package es.unileon.ulebank.service;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-public class Finder {
+public class Searcher {
 	/** Logger for this class and subclasses **/
 	protected final Log logger = LogFactory.getLog(getClass());
 

@@ -23,6 +23,10 @@ public class SimpleOfficeManager implements OfficeManager {
 	@Autowired
 	private EmployeeDao employeeDao;
 
+	public OfficeDao getOfficeDao() {
+		return officeDao;
+	}
+	
 	public void setOfficeDao(OfficeDao officeDao) {
 		this.officeDao = officeDao;
 	}
@@ -44,23 +48,24 @@ public class SimpleOfficeManager implements OfficeManager {
 		employee.setOffice(office);
 
 		List<Employee> employees = office.getEmployees();
+		System.out.println(employees.get(0).toString());
 
 		employees.add(employee);
 
 		office.setEmployees(employees);
 
 		officeDao.saveOffice(office);
+//		Command addEmployeeCommand = new AddEmployeeCommand(office, employee, getOfficeDao());
+//		addEmployeeCommand.execute();
 
 	}
 
-	@Override
 	public Office findOffice(Handler id) {
 		Office office = officeDao.findOffice(id.toString());
 
 		return office;
 	}
 
-	@Override
 	public List<Account> getAccountList(Handler officeID) {
 
 		Office office = this.findOffice(officeID);

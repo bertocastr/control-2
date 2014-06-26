@@ -44,7 +44,7 @@ public class JPAOfficeDao implements OfficeDao {
     
     @Transactional(readOnly = true)
 	public Office findOffice(String id) {    	
-		return (Office) em.createQuery("select o from Office o where o.officeID=" + id).getResultList().get(0);
+		return (Office) em.createQuery("select o from Office o where o.officeId=" + id).getResultList().get(0);
 	}
 
 

@@ -12,9 +12,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import es.unileon.ulebank.command.AddEmployeeCommand;
+import es.unileon.ulebank.command.Command;
 import es.unileon.ulebank.domain.Employee;
 import es.unileon.ulebank.domain.Office;
+import es.unileon.ulebank.handler.OfficeHandler;
 import es.unileon.ulebank.service.AddEmployee;
+import es.unileon.ulebank.service.Searcher;
 import es.unileon.ulebank.service.OfficeManager;
 
 @Controller
@@ -27,6 +31,8 @@ public class AddEmployeeFormController {
     @Autowired
     private OfficeManager officeManager;
 
+    Command addEmployeeCommand;
+    
     @RequestMapping(method = RequestMethod.POST)
     public String onSubmit(@Valid AddEmployee addEmployee, BindingResult result)
     {
@@ -39,9 +45,12 @@ public class AddEmployeeFormController {
         String address = addEmployee.getAddress();
         float salary = addEmployee.getSalary();
         String employeeId = addEmployee.getEmployeeId();
-        Office o = new Office("0001","2401","address1","24080","987987987", 10000, 10000, 100000, 100000, 100000, 100000, "1", 0);
+        Office o = officeManager.findOffice(new OfficeHandler("0001"));
         Employee employee = new Employee(o, employeeId, name, surnames, salary, address);
-        officeManager.addEmployee(employee, o);
+//		Command addEmployeeCommand = new AddEmployeeCommand(o, employee, getProductManager());
+        initializeCommand(o, employee, getProductManager());
+		addEmployeeCommand.execute();
+//        officeManager.addEmployee(employee, o);
         logger.info("Adding employee " + employeeId + ".");
         
         return "redirect:/startpage.htm";
@@ -67,4 +76,8 @@ public class AddEmployeeFormController {
         return officeManager;
     }
 
+    public Command initializeCommand(Office office, Employee employee, OfficeManager officeManager){
+    	addEmployeeCommand = new AddEmployeeCommand(office, employee, officeManager);
+    	return addEmployeeCommand;
+    }
 }
